@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Sanchez';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Sanchez'), local('Sanchez-Regular'), url(http://fonts.gstatic.com/s/sanchez/v4/ASmipTgPwTrjcfmzf6Zfwg.woff2) format('woff2'), url(http://fonts.gstatic.com/s/sanchez/v4/mx466fsxfR1AA3OwUm3waQ.woff) format('woff');
+}
+@font-face {
+  font-family: 'Sanchez';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Sanchez Italic'), local('Sanchez-Italic'), url(http://fonts.gstatic.com/s/sanchez/v4/HsmMg_Kwn-sTuZvQJORnl1tXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/sanchez/v4/HsmMg_Kwn-sTuZvQJORnlz8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}

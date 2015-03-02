@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taurus" >
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Taurus Secure Bank Transfer</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="css/dataTables.bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="app/scripts/resources/css/spinner.css" rel="stylesheet" type="text/css">
+
+        <!-- Retina.js - Load first for faster HQ mobile images. -->
+        <!--    <script src="Vitality_files/analytics.js" async=""></script>-->
+        <script src="js/retina.js"></script>
+
+
+        <!-- Font Awesome -->
+        <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+
+        <!-- Default Fonts -->
+        <link href="css/css.css" rel="stylesheet" type="text/css">
+        <link href="css/css_003.css" rel="stylesheet" type="text/css">
+
+        <!-- Modern Style Fonts (Include these is you are using body.modern!) -->
+        <link href="css/css_004.css" rel="stylesheet" type="text/css">
+        <link href="css/css_002.css" rel="stylesheet" type="text/css">
+
+        <!-- Vintage Style Fonts (Include these if you are using body.vintage!) -->
+        <link href="css/css_005.css" rel="stylesheet" type="text/css">
+        <link href="css/css_002.css" rel="stylesheet" type="text/css">
+
+        <!-- Plugin CSS -->
+        <link href="css/owl_003.css" rel="stylesheet" type="text/css">
+        <link href="css/owl.css" rel="stylesheet" type="text/css">
+        <link href="css/owl_002.css" rel="stylesheet" type="text/css">
+        <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
+        <link href="css/jquery.css" rel="stylesheet" type="text/css">
+        <link href="css/animate.css" rel="stylesheet" type="text/css">
+        <!--        <link href='http://fonts.googleapis.com/css?family=Lobster&style=italic' rel='stylesheet' type='text/css'>-->
+
+        <!-- Style Switcher CSS - Demo Purposes Only! -->
+        <link id="changeable-colors" rel="stylesheet" href="css/taurus.css">
+        <link href="css/style-switcher.css" rel="stylesheet">
+
+        <!-- IE8 support for HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+          <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+
+        <link rel="shortcut icon" type="image/png" href="jasmine/lib/jasmine-2.0.0/jasmine_favicon.png">
+        <link rel="stylesheet" type="text/css" href="jasmine/lib/jasmine-2.0.0/jasmine.css">
+
+        <script type="text/javascript" src="jasmine/lib/jasmine-2.0.0/jasmine.js"></script>
+        <script type="text/javascript" src="jasmine/lib/jasmine-2.0.0/jasmine-html.js"></script>
+        <script type="text/javascript" src="jasmine/lib/jasmine-2.0.0/boot.js"></script>
+
+    </head>
+
+    <!-- Alternate Body Classes: .modern and .vintage -->
+
+    <body class="wallpaper-inititalized" id="page-top" ng-controller="MainController">
+
+
+    <spinner-loader></spinner-loader>
+
+
+
+    <!-- Navigation -->
+    <!-- Note: navbar-default and navbar-inverse are both supported with this theme. -->
+    <nav class="navbar navbar-inverse navbar-fixed-top navbar-expanded" ng-controller="NavbarController">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#page-top" ng-click="load()">
+                    <img style="width:80%;position:relative;top:5px;" src="img/logo-taurus.png" class="img-responsive" alt="">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden active">                            
+                        <a href="#page-top"></a>
+                    </li>                        
+                    <li>
+                        <a href="#interface" ng-click="load()">Payment</a>
+                    </li>                       
+                    <li>
+                        <a href="#howitworks" ng-click="load()">How it works</a>
+                    </li>
+                    <li>
+                        <a href="#contact" ng-click="load()">Contact</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+    <layout-header></layout-header>
+
+
+
+
+
+
+    <section id="interface" ng-controller="InterfaceController">
+        <div class="container-fluid">
+            <a name="interface-anchor"></a>
+            <div class="row text-center">
+                <div style="visibility: hidden; animation-name: none;" class="col-lg-12 wow fadeIn">
+                    <h1>Payment</h1>
+                    <p>Symmetry Authcode Payment System</p>
+                    <hr class="colored">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        <div id="contact-success" class="alert alert-success" ng-show="isAuthCode"> Your Authorization code is: 5344299892019</div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-show="isInterfaceVisible">
+                <div class="row center-block" ng-show="initInterface">
+                    <div class="col-lg-3 col-lg-offset-5">
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn-disabled">1</div>
+                            <div class="col-md-4 terranova-btn-disabled">2</div>
+                            <div class="col-md-4 terranova-btn-disabled">3</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn-disabled">4</div>
+                            <div class="col-md-4 terranova-btn-disabled">5</div>
+                            <div class="col-md-4 terranova-btn-disabled">6</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn-disabled">7</div>
+                            <div class="col-md-4 terranova-btn-disabled">8</div>
+                            <div class="col-md-4 terranova-btn-disabled">9</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn-disabled">0</div>
+                            <div class="col-md-8 terranova-btn-lg-disabled"><i class="fa fa-arrow-circle-left fa-1x"></i></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row center-block" ng-show="workingInterface">
+                    <div class="col-lg-3 col-lg-offset-5 center">
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(1)">1</div>
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(2)">2</div>
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(3)">3</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(4)">4</div>
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(5)">5</div>
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(6)">6</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(7)">7</div>
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(8)">8</div>
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(9)">9</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 terranova-btn" ng-click="updateAuthCode(0)">0</div>
+                            <div class="col-md-8 terranova-btn-lg " ng-click="clearLastAuthCode()"><i class="fa fa-arrow-circle-left fa-1x"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row content-row">
+                <div class="col-lg-4 col-lg-offset-4">
+
+                    <form name="secretCode" ng-submit="setSecretCode()" id="secretCode" novalidate="" ng-show="isSecretCode">
+
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Code</label>
+                                <input value="" class="form-control" style="font-size: 18px;" placeholder="Code" id="secret-code" required="" data-validation-required-message="Please enter your secret code" type="password">
+                                <p class="help-block text-danger">Please enter your secret code here</p>
+                            </div>
+                        </div>    
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Email Address</label>
+                                <input value="" class="form-control" style="font-size: 18px;" placeholder="Email Address" id="email" required="" data-validation-required-message="Please enter your email address." type="email">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>  
+
+
+                        <br>
+
+                        <div class="row" ng-show="isSecretCodeSent">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <div id="contact-error" class="alert alert-danger" ng-show="isSecretCodeError">Sorry, Credentials are not valid or active. Please Contact your Bank.</div>                                    
+                                <button type="submit" class="btn btn-outline-dark">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>    
+                    
+                    
+                    
+                    
+                     <div class="row control-group" ng-show="isOperationCode">
+                            <div class="form-group col-xs-12">
+                                <blockquote>Authorization Code: 
+                                    <p class="alert alert-success">{{ operationCode}}</p>
+                                    <div id="contact-error" class="alert alert-danger" ng-show="isAuhtCodeError">The Authorization code provided is wrong. Please, try again or Contact your Bank.</div>                                    
+                                
+                                </blockquote>
+                            </div>
+                        </div>
+
+                    <p ng-show="isCodeAccepted"><span class="terranova-operation-imp">Secret Code accepted!</span> transaction stared with id: <b>{{ transactionID }}</b>. Please, digit now the authorization code that the system sent to your smartphone.</p>
+                        <p ng-show="isOpCodeAccepted"><span class="terranova-operation-imp">Authorization Code accepted!</span> please, insert bank trasfert data below and save the order. </p>
+
+                    
+                    
+                    
+                    
+
+                    <form name="saveOrder" ng-submit="loadOrder();" id="saveOrder" novalidate="" ng-show="isOrderActive">
+                        <br>
+                        <p><b>Transaction Data:</b></p>
+                        
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Beneficiary's Name</label>
+                                <input value="" class="form-control small" style="font-size: 18px;" placeholder="Beneficiary's Name" id="beneficiary-name" required="" data-validation-required-message="Please enter the beneficiary's name" type="text">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Beneficiary's Account (IBAN)</label>
+                                <input value="" class="form-control" style="font-size: 18px;" placeholder="Beneficiary's Account" id="beneficiary-account" required="" data-validation-required-message="Please enter the beneficiary's account (IBAN)" type="text">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Amount &euro; </label>
+                                <input value="" class="form-control" style="font-size: 18px;" placeholder="Amount &euro;" id="order-amount" required="" data-validation-required-message="Please enter the amount of the transaction in Euro" type="text">
+                                <p class="help-block text-danger">Please enter the amount in Euro format eg. 1350,50</p>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Bank's Note</label>
+                                <textarea class="form-control" style="font-size: 18px;" placeholder="Bank's Note" id="bank-note" required="" data-validation-required-message="Please enter a note" rows="2"></textarea>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+
+
+
+                        <br>
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12">                                
+                                <p>The order will be executed the following day: <span class="terranova-operation-imp">{{ orderDate}}</span>. You can cancel the order within 8 hours by contacting us.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-outline-dark">Save Order</button>
+                                <button type="button" ng-click="cancelOrder()" class="btn btn-outline-dark">Cancel</button>
+                            </div>
+                        </div>
+
+                        <br>
+
+
+                    </form>
+
+                    <div ng-show="isReview">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <b>Beneficiary's Name</b>
+                                <p ng-bind="beneficiaryname"></p>
+                            </div>
+                        </div>
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <b>Beneficiary's Account</b>
+                                <p ng-bind="beneficiaryaccount"></p>
+                            </div>
+                        </div>
+
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <b>Amount</b>
+                                <p ng-bind="orderamount"></p>
+                            </div>
+                        </div>
+
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <b>Bank's Note</b>
+                                <p ng-bind="banknote"></p>
+                            </div>
+                        </div>
+
+                        <br>
+
+
+
+                        <div class="row" ng-show="isSuccess">
+                            <div class="form-group col-xs-12">
+                                <form name="newTrans" ng-submit="newPayment();" id="newTrans" novalidate="">
+                                    <div id="contact-success" class="alert alert-success"> Thank You! Your transaction has been saved successfully. The operation reference number is <b>{{ operationID }}</b>. We sent the order details and status to your email address.</div>                        
+                                    <button type="submit" class="btn btn-outline-dark">Start a New Transaction</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="row" ng-show="isPaymentError">
+                            <div class="form-group col-xs-12">
+                                <form name="newTrans" ng-submit="newPayment()" id="newTrans" novalidate="">
+                                    <div id="contact-error" class="alert alert-danger">Sorry, the transaction has been refused. Please Contact your Bank or try again.</div>
+                                    <button type="submit" class="btn btn-outline-dark">Try again the Transaction</button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <br>
+
+                    <div class="row control-group" ng-show="isBankInfo">
+                        <div class="form-group col-xs-12 sfloating-label-form-group controls">
+                            Your Bank Info:
+                            <p class="">{{ bankInfo}}</p>
+                        </div>
+                    </div>
+                </div>                   
+            </div>   
+
+
+        </div>
+    </section>
+
+
+
+    <aside class="cta-quote" style="background-image: url('img/manhattan2-dark.jpeg');">
+        <div style="visibility: hidden; animation-name: none;" class="container wow fadeIn">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <span><span class="text-primary">Daniele Centamore</span> - PHP Developer - Symfony2, Angular.js, Bootstrap, Netbeans IDE, MySQL <span class="text-primary">daniele.centamore@gmail.com</span>.</span>
+                    <hr class=" colored">
+                    <a href="mailto:daniele.centamore@gmail.com" class="btn btn-outline-light">contact</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+
+    <div>
+        <section class="pricing" id="howitworks">
+            <div  style="visibility: hidden; animation-name: none;" class="container wow fadeIn" ng-hide="panel">
+                <div class="row text-center">
+                    <div class="col-lg-12">
+                        <h2>How it works</h2>
+                        <hr class="colored">
+                        <p>Taurus è un'interfaccia universale di pagamento per trasferimenti bancari UE / SEPA.</p>
+                    </div>
+                </div>
+
+                <div class="row text-center content-row">
+                    <div style="visibility: hidden; animation-delay: 0.2s; animation-name: none;" class="col-md-4 col-sm-6 wow fadeIn" data-wow-delay=".2s">
+                        <div class="about-content">
+                            <i class="fa fa-key fa-4x"></i>
+                            <h3><span>Secret Code</span></h3>
+                            <p>Inizia l'operazione con il codice segreto fornito dalla tua banca, che sarà anche la tua
+                                password di accesso a Taurus. Per effettuare i trasferimenti bancari dovrai sempre avere
+                                a portata di mano il tuo smartphone. 
+
+                            </p>
+                        </div>
+                    </div>
+                    <div style="visibility: hidden; animation-delay: 0.4s; animation-name: none;" class="col-md-4 col-sm-6 wow fadeIn" data-wow-delay=".4s">
+                        <div class="about-content">
+                            <i class="fa fa-cog fa-4x"></i>
+                            <h3><span>Operations</span></h3>
+                            <p>Le operazioni di pagamento avvengono attraverso un protocollo sicuro. Ogni operazione è eseguita
+                                grazie a un codice di sicurezza che può essere utilizzato una sola volta e che ti verrà inviato sul tuo smartphone.</p>
+                        </div>
+                    </div>
+                    <div style="visibility: hidden; animation-delay: 0.6s; animation-name: none;" class="col-md-4 col-sm-6 wow fadeIn" data-wow-delay=".6s">
+                        <div class="about-content">
+                            <i class="fa fa-bank fa-4x"></i>
+                            <h3><span>Commit</span></h3>
+                            <p>Le operazioni vengono sincronizzate con tua banca. L'operazione può essere modificata o eliminata entro 8 ore dall'invio dell'ordine. Il tuo istituto banbario eseguirà l'ordine solamente il giorno seguente
+                                dopo aver effettuato i dovuti controlli.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+    </div>
+
+
+
+
+    <aside class="cta-quote" style="background-image: url('img/manhattan2-dark.jpeg');">
+        <div style="visibility: hidden; animation-name: none;" class="container wow fadeIn">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <span><span class="text-primary">Daniele Centamore</span> - PHP Developer - Symfony2, Angular.js, Bootstrap, Netbeans IDE, MySQL <span class="text-primary">daniele.centamore@gmail.com</span>.</span>
+                    <hr class=" colored">
+                    <a href="mailto:daniele.centamore@gmail.com" class="btn btn-outline-light">contact</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+
+    <div ng-controller="ContactController">
+        <section id="contact">
+            <div style="visibility: hidden; animation-name: none;" class="container wow fadeIn">
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3 text-center">
+                        <h2>Contact Me</h2>
+                        <hr class="colored">
+                         <span><span class="text-primary">Daniele Centamore</span> - PHP Developer - Symfony2, Angular.js, Bootstrap, Netbeans IDE, MySQL <span class="text-primary">daniele.centamore@gmail.com</span>.</span>
+                    </div>
+                </div>
+                <div class="row content-row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <form name="contactForm" ng-submit="submitContact()" id="contactForm" novalidate="">
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Name</label>
+                                    <input value="" class="form-control" placeholder="Name" id="contact-name" required="" data-validation-required-message="Please enter your name." type="text">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Email Address</label>
+                                    <input value="" class="form-control" placeholder="Email Address" id="contact-email" required="" data-validation-required-message="Please enter your email address." type="email">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>                            
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Message</label>
+                                    <textarea rows="5" class="form-control" placeholder="Message" id="contact-message" required="" data-validation-required-message="Please enter a message."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <br>
+                            <div id="contact-success" class="alert alert-success" ng-show="isSuccessContact"> Thank You! Your message has been sent successfully.</div>
+                            <div id="contact-error" class="alert alert-danger" ng-show="isServerErrorContact">It seems that my mail server is not responding. Please try again later!</div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-outline-dark">Send</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <layout-footer></layout-footer>
+
+
+    <!-- Core Scripts -->
+    <script src="js/jquery_002.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+
+    <!-- Plugin Scripts -->
+    <script src="js/jquery_005.js"></script>
+    <script src="js/jquery_003.js"></script> 
+    <script src="js/jquery_004.js"></script>       
+    <script src="js/classie.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+    <script src="js/owl.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/jqBootstrapValidation.js"></script>    
+    <script src="js/style.js"></script>
+    <script src="js/taurus.js"></script>
+
+    <!-- Angularjs Scripts -->
+    <script src="lib/angularjs/js/angular.min.js"></script>
+    <script src="lib/angularjs/js/angular-mocks.js"></script>
+    <script src="lib/angularjs/js/angular-route.min.js"></script>        
+    <script src="app/app.js"></script>  
+    <script src="app/scripts/directives/directives.js"></script>    
+    <script src="app/scripts/controllers/controllers.js"></script>
+    <script src="app/scripts/services/services.js"></script>
+    <script src="app/scripts/factories/factories.js"></script>
+
+
+
+</body></html>
