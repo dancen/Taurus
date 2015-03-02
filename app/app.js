@@ -14,20 +14,7 @@
         'taurusDirectives',
         'taurusServices'])
             .constant('TIMEOUT', 1600)
-            .constant('RESPONSE_SUCCESS', "success")
-            .config(['$routeProvider',
-                function($routeProvider) {
-                    $routeProvider.
-                            when('/search', {
-                                templateUrl: './app/scripts/views/partials/search.html',
-                                controller: 'SearchController'
-                            }).
-                            otherwise({
-                                redirectTo: '/'
-                            });
-
-
-                }]);
+            .constant('RESPONSE_SUCCESS', "success");
 
 
 
